@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       url: `${config.vue3}/child/vue3/`,
-      microAppData: {msg: '来自基座的数据'}
+      microAppData: { msg: '来自基座的数据' }
     }
   },
   methods: {
@@ -37,11 +37,6 @@ export default {
 
     handleMount (): void {
       console.log('child-vue3 已经渲染完成')
-
-      setTimeout(() => {
-        // @ts-ignore
-        this.microAppData = {msg: '来自基座的新数据'}
-      }, 2000)
     },
 
     handleUnmount (): void {
@@ -54,7 +49,7 @@ export default {
 
     handleDataChange (e: CustomEvent): void {
       console.log('来自子应用 child-vue3 的数据:', e.detail.data)
-    },
+    }
   }
 }
 </script>

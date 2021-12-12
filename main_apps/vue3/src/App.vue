@@ -1,6 +1,5 @@
 <template>
   <div id="app-container">
-    <micro-app name='appname-sidebar' :url='url' :data='sidebarData'></micro-app>
     <router-view id='router-container' />
   </div>
 </template>
@@ -41,12 +40,12 @@ export default defineComponent({
               !childPath && (childPath = '/') // 防止地址为空
             }
             // 主应用通过下发data数据控制子应用跳转
-            microApp.setData(appName, { path: childPath })
+            microApp.setData(appName, { name: '李四' })
           }
-        },
-      },
+        }
+      }
     }
-  },
+  }
 } as any)
 </script>
 
@@ -56,20 +55,11 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
-  text-align: center;
 }
 #router-container {
   flex: 1;
 }
-#public-links {
-  padding: 10px 0;
-}
-#public-links a {
-  text-decoration: underline;
-  color: -webkit-link;
-  cursor: pointer;
-}
-#public-links a:active {
-  color: #f53f3f;
+body {
+    background: #f0f2f5;
 }
 </style>

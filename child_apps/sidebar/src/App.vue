@@ -32,28 +32,6 @@
           <span class='menu-item-text'>page2</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="appname-vite">
-        <template slot="title">
-          <span class='submenu-text'>child-vite</span>
-        </template>
-        <el-menu-item index="/app-vite">
-          <span class='menu-item-text'>home</span>
-        </el-menu-item>
-        <el-menu-item index="/app-vite/page2">
-          <span class='menu-item-text'>page2</span>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu index="appname-react16">
-        <template slot="title">
-          <span class='submenu-text'>child-react16</span>
-        </template>
-        <el-menu-item index="/app-react16">
-          <span class='menu-item-text'>home</span>
-        </el-menu-item>
-        <el-menu-item index="/app-react16/page2">
-          <span class='menu-item-text'>page2</span>
-        </el-menu-item>
-      </el-submenu>
       <el-submenu index="appname-react17">
         <template slot="title">
           <span class='submenu-text'>child-react17</span>
@@ -62,39 +40,6 @@
           <span class='menu-item-text'>home</span>
         </el-menu-item>
         <el-menu-item index="/app-react17/page2">
-          <span class='menu-item-text'>page2</span>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu index="appname-angular11">
-        <template slot="title">
-          <span class='submenu-text'>child-angular11</span>
-        </template>
-        <el-menu-item index="/app-angular11">
-          <span class='menu-item-text'>home</span>
-        </el-menu-item>
-        <el-menu-item index="/app-angular11/page2">
-          <span class='menu-item-text'>page2</span>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu index="appname-nextjs">
-        <template slot="title">
-          <span class='submenu-text'>child-nextjs</span>
-        </template>
-        <el-menu-item index="/app-nextjs">
-          <span class='menu-item-text'>home</span>
-        </el-menu-item>
-        <el-menu-item index="/app-nextjs/page2">
-          <span class='menu-item-text'>page2</span>
-        </el-menu-item>
-      </el-submenu>
-      <el-submenu index="appname-nuxtjs">
-        <template slot="title">
-          <span class='submenu-text'>child-nuxtjs</span>
-        </template>
-        <el-menu-item index="/app-nuxtjs">
-          <span class='menu-item-text'>home</span>
-        </el-menu-item>
-        <el-menu-item index="/app-nuxtjs/page2">
           <span class='menu-item-text'>page2</span>
         </el-menu-item>
       </el-submenu>

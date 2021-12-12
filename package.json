@@ -16,7 +16,7 @@
     "dev:main-react17": "npm-run-all --parallel dev-main:react17 dev-child:* dev:child-nextjs-react17 dev:child-nuxtjs-react17",
     "dev:main-vite": "npm-run-all --parallel dev-main:vite dev-child:* dev:child-nextjs-vite dev:child-nuxtjs-vite",
     "dev:main-vue2": "npm-run-all --parallel dev-main:vue2 dev-child:* dev:child-nextjs-vue2 dev:child-nuxtjs-vue2",
-    "dev:main-vue3": "npm-run-all --parallel dev-main:vue3 dev-child:* dev:child-nextjs-vue3 dev:child-nuxtjs-vue3",
+    "dev:main-vue3": "npm-run-all --parallel dev-main:vue3 dev-child:*",
     "dev-main:angular11": "cd main_apps/angular11 && yarn dev",
     "dev-main:nextjs11": "cd main_apps/nextjs11 && yarn dev",
     "dev-main:nuxtjs2": "cd main_apps/nuxtjs2 && yarn dev",

@@ -32,7 +32,7 @@ function handleMicroData () {
 
     // 向基座发送数据
     setTimeout(() => {
-      window.microApp.dispatch({ myname: 'child-vue2' })
+      window.microApp.dispatch({ myname: '长伟' })
     }, 3000)
   }
 }
