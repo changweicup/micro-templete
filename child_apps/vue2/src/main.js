@@ -10,7 +10,7 @@ const router = new VueRouter({
   mode: 'history',
   // __MICRO_APP_BASE_ROUTE__ 为micro-app传入的基础路由
   base: window.__MICRO_APP_BASE_ROUTE__ || process.env.BASE_URL,
-  routes,
+  routes
 })
 
 // 与基座进行数据交互
@@ -38,47 +38,47 @@ function handleMicroData () {
 }
 
 // ----------分割线---默认模式------两种模式任选其一-----放开注释即可运行------- //
-// const app = new Vue({
-//   router,
-//   render: h => h(App),
-// }).$mount('#vue2-app')
+const app = new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#vue2-app')
 
-// console.log('微应用child-vue2渲染了')
+console.log('微应用child-vue2渲染了')
 
-// handleMicroData()
+handleMicroData()
 
-// // 监听卸载操作
-// window.addEventListener('unmount', function () {
-//   app.$destroy()
-//   console.log('微应用child-vue2卸载了')
-// })
+// 监听卸载操作
+window.addEventListener('unmount', function () {
+  app.$destroy()
+  console.log('微应用child-vue2卸载了')
+})
 
 // ----------分割线---umd模式------两种模式任选其一-------------- //
-let app = null
-// 将渲染操作放入 mount 函数
-function mount () {
-  app = new Vue({
-    router,
-    render: h => h(App),
-  }).$mount('#vue2-app')
+// let app = null
+// // 将渲染操作放入 mount 函数
+// function mount () {
+//   app = new Vue({
+//     router,
+//     render: h => h(App)
+//   }).$mount('#vue2-app')
 
-  console.log('微应用child-vue2渲染了')
+//   console.log('微应用child-vue2渲染了')
 
-  handleMicroData()
-}
+//   handleMicroData()
+// }
 
 // 将卸载操作放入 unmount 函数
-function unmount () {
-  app.$destroy()
-  app.$el.innerHTML = ''
-  app = null
-  console.log('微应用child-vue2卸载了')
-}
+// function unmount () {
+//   app.$destroy()
+//   app.$el.innerHTML = ''
+//   app = null
+//   console.log('微应用child-vue2卸载了')
+// }
 
-// 微前端环境下，注册mount和unmount方法
-if (window.__MICRO_APP_ENVIRONMENT__) {
-  window[`micro-app-${window.__MICRO_APP_NAME__}`] = { mount, unmount }
-} else {
-  // 非微前端环境直接渲染
-  mount()
-}
+// // 微前端环境下，注册mount和unmount方法
+// if (window.__MICRO_APP_ENVIRONMENT__) {
+//   window[`micro-app-${window.__MICRO_APP_NAME__}`] = { mount, unmount }
+// } else {
+//   // 非微前端环境直接渲染
+//   mount()
+// }

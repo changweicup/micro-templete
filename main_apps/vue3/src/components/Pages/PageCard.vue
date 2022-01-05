@@ -1,16 +1,16 @@
 <template>
   <div class="page-card">
-    Container
+    <slot></slot>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .page-card {
-    position: relative;
-    top: 64px;
+    box-sizing: border-box;
     width: 100%;
-    min-height: calc(100vh - 104px);
+    height: 100%;
     background: #fff;
-    margin: 20px;
+    padding: 20px;
+    border-radius: 2px;
   }
 </style>

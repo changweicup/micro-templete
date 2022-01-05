@@ -3,7 +3,7 @@
     <micro-app
       name='appname-vue3'
       :url='url'
-      baseroute='/main-vue3/app-vue3'
+      baseroute='/app-vue3'
       :data='microAppData'
       @created='handleCreate'
       @beforemount='handleBeforeMount'

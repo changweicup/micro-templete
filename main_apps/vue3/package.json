@@ -10,13 +10,20 @@
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",
     "@micro-zoe/micro-app": "latest",
+    "@vueuse/core": "^7.3.0",
     "core-js": "^3.6.5",
     "element-plus": "^1.2.0-beta.6",
+    "mitt": "^3.0.0",
+    "pinia": "^2.0.9",
+    "sortablejs": "^1.14.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",
+    "vuedraggable": "^4.0.3",
+    "vuex": "^4.0.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@types/sortablejs": "^1.10.7",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -35,6 +42,8 @@
     "eslint-plugin-vue": "^7.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
     "typescript": "~4.1.5"
   }
 }

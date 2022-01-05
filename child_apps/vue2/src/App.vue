@@ -17,7 +17,7 @@ export default {
       if (window.__MICRO_APP_ENVIRONMENT__) {
         const activePage = e.target.getAttribute('page-path')
         // 发送全局数据，通知侧边栏修改菜单展示
-        window.microApp.setGlobalData({name: '长伟'})
+        window.microApp.setGlobalData({ name: '长伟' })
       }
     }
   }

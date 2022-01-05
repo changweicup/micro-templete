@@ -49,17 +49,6 @@ export default defineComponent({
 } as any)
 </script>
 
-<style>
-#app-container {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-}
-#router-container {
-  flex: 1;
-}
-body {
-    background: #f0f2f5;
-}
+<style lang="scss">
+  @import 'styles/common.scss';
 </style>

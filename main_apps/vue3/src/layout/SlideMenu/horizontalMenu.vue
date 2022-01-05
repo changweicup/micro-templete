@@ -1,14 +1,20 @@
 <template>
   <div class="cw-menu">
-    <div class="cw-menu-wrap">
+    <div class="cw-menu-wrap"  @mouseenter="handleMenuEnter" @mouseleave="handleMenuLeave">
       <div class="cw-menu--horizontal">
-        <div class="cw-menu-item" @mouseenter="handleMenuEnter" @mouseleave="handleMenuLeave">菜单</div>
-        <div class="cw-menu-item">菜单</div>
-        <div class="cw-menu-item">菜单</div>
-        <div class="cw-menu-item">菜单</div>
+        <div class="cw-menu-item" >Dashboard</div>
+        <div class="cw-menu-item" >菜单</div>
+        <div class="cw-menu-item" >菜单</div>
+        <div class="cw-menu-item" >菜单</div>
       </div>
       <transition name="slide-fade">
-        <div class="cw-menu-drawer" v-show="menuDrawer"></div>
+        <div
+         class="cw-menu-drawer"
+          v-show="menuDrawer"
+          :style="{
+            'top': `${commonConfig.HeaderHeight}px`,
+          }"
+          ></div>
       </transition>
     </div>
   </div>
@@ -16,6 +22,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { commonConfig } from '../commonConfig'
 
 const menuDrawer = ref(false)
 
@@ -36,17 +43,10 @@ const handleMenuLeave = () => {
     border-right: none;
 }
 
-.cw-menu--horizontal>.cw-menu-item {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    margin: 0;
-    border-bottom: 2px solid transparent;
-    color: var(--el-menu-text-color);
-}
 .cw-menu-item {
-    line-height: 56px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
     font-size: var(--el-menu-item-font-size);
     padding: 0 20px;
     list-style: none;
@@ -64,7 +64,6 @@ const handleMenuLeave = () => {
 }
 .cw-menu-drawer {
   position: absolute;
-  top: 64px;
   z-index: 1000;
   height: 400px;
   width: 1000px;

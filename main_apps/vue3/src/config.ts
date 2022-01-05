@@ -1,6 +1,6 @@
 
 // 开发环境地址
-const config: Record<string, string> = {
+export const config: Record<string, string> = {
   sidebar: 'http://localhost:4006',
   vue3: 'http://localhost:4009',
   vue2: 'http://localhost:4008'

@@ -1,27 +1,72 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/home.vue'
-import Layout from '../components/Layout/index.vue'
+import Layout from '../layout/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Layout',
+    redirect: '/home',
+    component: Layout,
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('../views/home.vue'),
+        meta: {
+          title: '首页'
+        }
+      },
+      {
+        path: 'app-vue2/:page*',
+        name: 'app-vue2',
+        component: () =>
+          import(/* webpackChunkName: "vue2" */ '../views/vue2.vue'),
+        meta: {
+          title: 'app-vue2'
+        }
+      },
+      {
+        path: 'app-vue3/:page*',
+        name: 'app-vue3',
+        component: () =>
+          import(/* webpackChunkName: "vue3" */ '../views/vue3.vue'),
+        meta: {
+          title: 'app-vue3'
+        }
+      }
+    ]
   },
   {
-    path: '/layout',
-    name: 'Home',
-    component: Layout
-  },
-  {
-    path: '/app-vue2/:page*',
-    name: 'app-vue2',
-    component: () => import(/* webpackChunkName: "vue2" */ '../views/vue2.vue')
-  },
-  {
-    path: '/app-vue3/:page*',
-    name: 'app-vue3',
-    component: () => import(/* webpackChunkName: "vue3" */ '../views/vue3.vue')
+    path: '/authority',
+    redirect: 'Roles',
+    component: Layout,
+    name: 'Authority',
+    children: [
+      {
+        path: 'roles',
+        name: 'Roles',
+        component: () => import('../views/roles.vue'),
+        meta: {
+          title: '角色管理'
+        }
+      },
+      {
+        path: 'users',
+        name: 'Users',
+        component: () => import('../views/users.vue'),
+        meta: {
+          title: '用户管理'
+        }
+      },
+      {
+        path: 'resource',
+        name: 'Resource',
+        component: () => import('../views/resource.vue'),
+        meta: {
+          title: '资源管理'
+        }
+      }
+    ]
   }
 ]
 
