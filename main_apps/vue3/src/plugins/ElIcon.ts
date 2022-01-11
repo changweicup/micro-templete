@@ -3,7 +3,8 @@ import {
   Document,
   Menu,
   Close,
-  Setting
+  Setting,
+  Fold
 } from '@element-plus/icons-vue'
 
 // 所需的组件
@@ -12,7 +13,8 @@ export const components = [
   Document,
   Menu,
   Close,
-  Setting
+  Setting,
+  Fold
 ]
 // 注册
 export default (app: any) => {

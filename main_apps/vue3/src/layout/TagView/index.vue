@@ -13,7 +13,7 @@
               <span>{{ element.meta.title }}</span>
             </div>
             <div style="margin-left: 10px" v-if="element.meta.title !== '首页'">
-              <Icon name="el-Close-icon" @click.stop="closeTabItem(element)"></Icon>
+              <Icon name="Close" @click.stop="closeTabItem(element)"></Icon>
             </div>
           </div>
         </template>
@@ -131,11 +131,12 @@ const linkTo = (e: { fullPath: any }) => {
 <style lang="scss" scoped>
 .tag-box-wrap {
   position: fixed;
-  height: 30px;
+  box-sizing: border-box;
+  height: 42px;
   width: 100%;
   background-color: transparent;
   z-index: 100;
-  padding: 6px 20px;
+  padding: 6px 15px;
 }
 
 .tags-main-box {

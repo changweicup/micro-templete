@@ -1,7 +1,7 @@
 <template>
   <span class="icon-comp">
-    <el-icon v-if="type === 'el-icon'" :style="{ 'font-size': size + 'px' }">
-      <component :is="name" />
+    <el-icon v-if="type === 'el-icon'" :style="{ 'font-size': size + 'px', 'color': color || '' }">
+      <component :is="`el-${name}-icon`" />
     </el-icon>
   </span>
 </template>
@@ -19,7 +19,7 @@ defineProps({
   },
   color: {
     type: String,
-    default: '#333'
+    default: ''
   },
   theme: {
     type: String,

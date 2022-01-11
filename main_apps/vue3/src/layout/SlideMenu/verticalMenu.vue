@@ -1,17 +1,30 @@
 <template>
-  <div class="slide-menu"
-     :style="{
-         'top': `${commonConfig.HeaderHeight}px`,
-         'height': `calc(100vh - ${commonConfig.HeaderHeight}px)`,
-         'width': `${commonConfig.SlideMenuWidth}px`
-       }"
+  <div
+    class="slide-menu"
+    :style="{
+      'height': `100vh`,
+      marginTop: `${commonConfig.HeaderHeight}px`,
+      'width': `${commonStore.isCollapse ? '40' : commonConfig.SlideMenuWidth}px`
+    }"
   >
-    <el-menu
-      class="el-menu-vertical-demo"
-      :default-active="activeIndex"
+    <el-scrollbar
+      :style="{
+        'height': `calc(100% - ${commonConfig.HeaderHeight + 40}px)`
+      }"
     >
-     <MenuTree :menuList="menus"/>
-    </el-menu>
+      <el-menu
+        class="el-menu-vertical"
+        :default-active="activeIndex"
+        :style="{
+          'height': `calc(100% - ${commonConfig.HeaderHeight + 24}px)`
+        }"
+      >
+        <MenuTree :menuList="menus" />
+      </el-menu>
+    </el-scrollbar>
+    <div class="slide-menu-collapse">
+      <Icon name="Fold" :color="commonConfig.PrimaryColor" size="22" @click="handleCollapse"></Icon>
+    </div>
   </div>
 </template>
 
@@ -20,6 +33,10 @@ import { onMounted, ref } from 'vue'
 import { commonConfig } from '../commonConfig'
 import { menus } from '../../router/menu'
 import MenuTree from './MenuTree.vue'
+import Icon from '@/components/Icon/index.vue'
+import { useCommonStore } from '@/stores/modules/commonStore'
+
+const commonStore = useCommonStore()
 
 const activeIndex = ref()
 
@@ -36,6 +53,10 @@ const getActiveIndex = () => {
   if (activeIndex.value !== '/') {
     activeIndex.value = activeIndex.value.replace(/\/$/, '')
   }
+}
+
+const handleCollapse = () => {
+  commonStore.setCollapse(!commonStore.isCollapse)
 }
 </script>
 
@@ -56,12 +77,16 @@ const getActiveIndex = () => {
   position: fixed;
   background: #fff;
   border-right: 1px solid #f0f0f0;
+  box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
 }
 .el-menu {
   border-right: none;
 }
-.el-menu-vertical-demo {
+.el-menu-vertical {
   width: 100%;
-  height: 100%;
+}
+.slide-menu-collapse {
+  margin-top: 8px;
+  cursor: pointer;
 }
 </style>

@@ -1,23 +1,25 @@
 <template>
-  <div class="header-box-wrap">
-    <div
-      class="layout-header"
-      :style="{
-        'height': `${commonConfig.HeaderHeight}px`,
-        'line-height': `${commonConfig.HeaderHeight}px`,
-      }"
-    >
-      <div
-        class="header-icon-name"
-        :style="{
-          width: `${commonConfig.SlideMenuWidth}px`
-        }"
-      >
-        <div>
-          <span>麒 麟</span>
-        </div>
+  <div
+    class="header-box-wrap"
+    :style="{
+      height: `${commonConfig.HeaderHeight}px`,
+      lineHeight: `${commonConfig.HeaderHeight}px`,
+    }"
+  >
+    <div class="header-title" :style="{
+      width: `${commonConfig.SlideMenuWidth}px`,
+    }">
+      <div>
+        <span>麒 麟</span>
       </div>
     </div>
+    <div
+      class="header-content"
+      :style="{
+        marginLeft: `${commonConfig.SlideMenuWidth}px`,
+        width: `calc(100% - ${commonConfig.SlideMenuWidth}px)`,
+      }"
+    ></div>
   </div>
 </template>
 
@@ -27,17 +29,20 @@ import { commonConfig } from '../commonConfig'
 </script>
 
 <style lang="scss" scoped>
-.layout-header {
+.header-box-wrap {
   position: fixed;
+  box-sizing: border-box;
+  display: flex;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   width: 100%;
   background: #fff;
-  box-shadow: 0 2px 8px #f0f1f2;
-  padding: 0 20px;
   z-index: 100;
-}
-.header-box-wrap {
-  .header-icon-name {
-    display: flex;
+
+  .header-title {
+    padding: 0 20px;
+  }
+  .header-content {
+    padding: 0 20px;
   }
 }
 </style>

@@ -6,17 +6,16 @@
       <div
         class="micro-layout-container"
         :style="{
-          'top': `${commonConfig.HeaderHeight}px`,
-          'left': `${commonConfig.SlideMenuWidth}px`,
-          'min-height': `calc(100vh - ${commonConfig.HeaderHeight}px)`,
-          'width': `calc(100% - ${commonConfig.SlideMenuWidth}px)`
+          top: `${commonConfig.HeaderHeight}px`,
+          minHeight: `calc(100vh - ${commonConfig.HeaderHeight}px)`,
+          marginLeft: `${!commonStore.isCollapse ? commonConfig.SlideMenuWidth : '40' }px`,
+          width: `calc(100% - ${(commonStore.isCollapse ? 40 : commonConfig.SlideMenuWidth) + 30}px)`
         }"
       >
         <TagView></TagView>
         <div
           class="micro-content"
           :style="{
-            'height': `calc(100% - 60px)`,
           }"
         >
           <router-view v-slot="{ Component }">
@@ -35,6 +34,9 @@ import Header from './Header/index.vue'
 import SlideMenu from './SlideMenu/verticalMenu.vue'
 import TagView from './TagView/index.vue'
 import { commonConfig } from './commonConfig'
+import { useCommonStore } from '@/stores/modules/commonStore'
+
+const commonStore = useCommonStore()
 
 </script>
 
@@ -49,7 +51,10 @@ import { commonConfig } from './commonConfig'
 }
 .micro-content {
   position: relative;
-  margin: 0px 20px 20px 20px;
-  top: 42px;
+  box-sizing: border-box;
+  margin: 0px 15px 15px 15px;
+      top: 42px;
+
+  width: 100%;
 }
 </style>
