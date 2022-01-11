@@ -83,7 +83,7 @@ console.log(tabsList.value)
 
 const whiteList: string[] = []
 
-// 监听路由
+// 监听路由1
 watch(
   () => route.fullPath,
   (to) => {
