@@ -4,7 +4,7 @@
     :style="{
       'height': `100vh`,
       marginTop: `${commonConfig.HeaderHeight}px`,
-      'width': `${commonStore.isCollapse ? '40' : commonConfig.SlideMenuWidth}px`
+      'width': `${commonStore.isCollapse ? commonConfig.SlideMenuMinWidth : commonConfig.SlideMenuWidth}px`
     }"
   >
     <el-scrollbar
@@ -12,15 +12,17 @@
         'height': `calc(100% - ${commonConfig.HeaderHeight + 40}px)`
       }"
     >
-      <el-menu
-        class="el-menu-vertical"
-        :default-active="activeIndex"
-        :style="{
-          'height': `calc(100% - ${commonConfig.HeaderHeight + 24}px)`
-        }"
-      >
-        <MenuTree :menuList="menus" />
-      </el-menu>
+      <transition name="el-fade-in-linear" appear>
+        <el-menu
+          class="el-menu-vertical"
+          :default-active="activeIndex"
+          :style="{
+            'height': `calc(100% - ${commonConfig.HeaderHeight + 24}px)`
+          }"
+        >
+          <MenuTree :menuList="menus" />
+        </el-menu>
+      </transition>
     </el-scrollbar>
     <div class="slide-menu-collapse">
       <Icon name="Fold" :color="commonConfig.PrimaryColor" size="22" @click="handleCollapse"></Icon>
@@ -29,18 +31,26 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { commonConfig } from '../commonConfig'
 import { menus } from '../../router/menu'
 import MenuTree from './MenuTree.vue'
 import Icon from '@/components/Icon/index.vue'
 import { useCommonStore } from '@/stores/modules/commonStore'
+import { useRoute } from 'vue-router'
 
 const commonStore = useCommonStore()
+const route = useRoute()
 
 const activeIndex = ref()
 
+console.log(location.pathname)
+
 onMounted(() => {
+  getActiveIndex()
+})
+
+watch(route, () => {
   getActiveIndex()
 })
 
@@ -61,23 +71,14 @@ const handleCollapse = () => {
 </script>
 
 <style lang="scss" scoped>
-:deep(.el-menu--inline) {
-  background: #fafafa;
-}
-
-:deep(.el-menu-item.is-active) {
-  border-left: 3px solid var(--el-color-primary);
-  background-color: var(--el-color-primary-light-9);
-  color: var(--el-color-primary);
-}
-:deep(.el-menu-item:hover) {
-  border-left: 3px solid var(--el-color-primary);
-}
 .slide-menu {
   position: fixed;
   background: #fff;
   border-right: 1px solid #f0f0f0;
-  box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
+  box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1s;
 }
 .el-menu {
   border-right: none;
@@ -87,6 +88,8 @@ const handleCollapse = () => {
 }
 .slide-menu-collapse {
   margin-top: 8px;
+  padding-left: 15px;
   cursor: pointer;
 }
+
 </style>

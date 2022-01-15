@@ -79,7 +79,6 @@ tabsViewStore.initTabs(cacheRoutes)
 
 // 标签页列表
 const tabsList: any = computed(() => tabsViewStore.tabsList)
-console.log(tabsList.value)
 
 const whiteList: string[] = []
 

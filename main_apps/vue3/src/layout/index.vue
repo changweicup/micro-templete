@@ -8,16 +8,12 @@
         :style="{
           top: `${commonConfig.HeaderHeight}px`,
           minHeight: `calc(100vh - ${commonConfig.HeaderHeight}px)`,
-          marginLeft: `${!commonStore.isCollapse ? commonConfig.SlideMenuWidth : '40' }px`,
-          width: `calc(100% - ${(commonStore.isCollapse ? 40 : commonConfig.SlideMenuWidth) + 30}px)`
+          marginLeft: `${!commonStore.isCollapse ? commonConfig.SlideMenuWidth : commonConfig.SlideMenuMinWidth}px`,
+          width: `calc(100% - ${(commonStore.isCollapse ? commonConfig.SlideMenuMinWidth : commonConfig.SlideMenuWidth) + 30}px)`
         }"
       >
         <TagView></TagView>
-        <div
-          class="micro-content"
-          :style="{
-          }"
-        >
+        <div class="micro-content">
           <router-view v-slot="{ Component }">
             <transition name="el-fade-in-linear" mode="out-in" appear>
               <component :is="Component" />
@@ -48,13 +44,16 @@ const commonStore = useCommonStore()
 .micro-layout-container {
   position: relative;
   background: #f0f2f5;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1s;
 }
 .micro-content {
   position: relative;
   box-sizing: border-box;
   margin: 0px 15px 15px 15px;
-      top: 42px;
-
+  top: 42px;
+  height: calc(100% - 42px);
   width: 100%;
 }
 </style>

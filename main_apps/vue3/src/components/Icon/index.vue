@@ -45,6 +45,5 @@ defineProps({
     align-items: center;
     vertical-align: middle;
     text-align: center;
-    margin: 0 0 0 5px;
   }
 </style>
