@@ -41,9 +41,8 @@ import NoticeList from './noticeList.vue'
 
 const activeName = ref('通知')
 
-const handleClick = (tab: string, event: Event) => {
+const handleClick = (tab: any) => {
   console.log(tab)
-  console.log(Event)
 }
 
 </script>

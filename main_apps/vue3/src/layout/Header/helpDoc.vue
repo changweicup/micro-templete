@@ -2,7 +2,6 @@
   <div class="header-action-item">
     <div class="action-wraper">
       <el-tooltip
-        effect="dark"
         content="文 档"
         placement="bottom"
       >
