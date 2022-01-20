@@ -3,41 +3,44 @@
     class="slide-menu"
     :style="{
       'height': `100vh`,
-      marginTop: `${commonConfig.HeaderHeight}px`,
-      'width': `${commonStore.isCollapse ? commonConfig.SlideMenuMinWidth : commonConfig.SlideMenuWidth}px`
+      marginTop: `${ThemeConfig.HeaderHeight}px`,
+      'width': `${commonStore.isCollapse ? ThemeConfig.SlideMenuMinWidth : ThemeConfig.SlideMenuWidth}px`
     }"
   >
+    <div
+      class="special-button-box"
+    >
+      <Button v-if="!commonStore.isCollapse">写笔记</Button>
+    </div>
     <el-scrollbar
       :style="{
-        'height': `calc(100% - ${commonConfig.HeaderHeight + 40}px)`
+        'height': `calc(100% - ${ThemeConfig.HeaderHeight + 120}px)`
       }"
     >
-      <transition name="el-fade-in-linear" appear>
-        <el-menu
-          class="el-menu-vertical"
-          :default-active="activeIndex"
-          :style="{
-            'height': `calc(100% - ${commonConfig.HeaderHeight + 24}px)`
-          }"
-        >
-          <MenuTree :menuList="menus" />
-        </el-menu>
-      </transition>
+      <el-menu class="el-menu-vertical" :default-active="activeIndex">
+        <MenuTree :menuList="menus" />
+      </el-menu>
     </el-scrollbar>
     <div class="slide-menu-collapse">
-      <Icon name="Fold" :color="commonConfig.PrimaryColor" size="22" @click="handleCollapse"></Icon>
+      <Icon
+        :name="!commonStore.isCollapse ? 'Fold' : 'Expand'"
+        :color="ThemeConfig.PrimaryColor"
+        size="22"
+        @click="handleCollapse"
+      ></Icon>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
-import { commonConfig } from '../commonConfig'
+import { ThemeConfig } from '../../themeConfig'
 import { menus } from '../../router/menu'
 import MenuTree from './MenuTree.vue'
 import Icon from '@/components/Icon/index.vue'
 import { useCommonStore } from '@/stores/modules/commonStore'
 import { useRoute } from 'vue-router'
+import Button from './component/Button.vue'
 
 const commonStore = useCommonStore()
 const route = useRoute()
@@ -50,9 +53,12 @@ onMounted(() => {
   getActiveIndex()
 })
 
-watch(route, () => {
-  getActiveIndex()
-})
+watch(
+  () => route.fullPath,
+  () => {
+    getActiveIndex()
+  }
+)
 
 const getActiveIndex = () => {
   // location.pathname的值通常为：/main-angular11/app-vue2/page2，我们只取`/app-vue2/page2`
@@ -78,7 +84,7 @@ const handleCollapse = () => {
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 .el-menu {
   border-right: none;
@@ -88,8 +94,13 @@ const handleCollapse = () => {
 }
 .slide-menu-collapse {
   margin-top: 8px;
-  padding-left: 15px;
+  padding-left: 23px;
   cursor: pointer;
 }
-
+.special-button-box {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

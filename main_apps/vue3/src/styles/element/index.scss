@@ -6,4 +6,16 @@
   )
 );
 
+:root {
+  --el-box-shadow-light: 0 6px 16px -8px rgba(0,0,0,.08),0 9px 28px 0 rgba(0,0,0,.05),0 12px 48px 16px rgba(0,0,0,.03) !important;
+}
+
+.el-card {
+    --el-card-border-color: var(--el-border-color-light, #ebeef5);
+    --el-card-border-radius: 0px;
+    --el-card-padding: 20px;
+    --el-card-bg-color: var(--el-color-white);
+}
+
 @import 'element-plus/theme-chalk/src/index.scss'
+

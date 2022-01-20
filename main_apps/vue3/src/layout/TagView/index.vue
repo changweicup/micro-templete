@@ -32,7 +32,7 @@ import Draggable from 'vuedraggable'
 import { TAGS_ROUTES } from '@/utils/storeKeys'
 import { useTabsViewStore, RouteItem } from '@/stores/modules/tabsView'
 import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
-import { storage } from '@/utils/storage.ts'
+import { storage } from '@/utils/storage'
 import { ElMessage } from 'element-plus'
 
 const tabsViewStore = useTabsViewStore()
@@ -133,9 +133,9 @@ const linkTo = (e: { fullPath: any }) => {
   box-sizing: border-box;
   height: 42px;
   width: 100%;
-  background-color: transparent;
-  z-index: 100;
-  padding: 6px 15px;
+  background-color: var(--el-color-white);
+  z-index: 99;
+  padding: 6px 0px;
 }
 
 .tags-main-box {
@@ -151,15 +151,15 @@ const linkTo = (e: { fullPath: any }) => {
   line-height: 30px;
   font-size: 14px;
   border-radius: 2px;
+  border: 1px solid var(--el-border-color-lighter);
   padding: 0 20px;
   margin-right: 6px;
   cursor: pointer;
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .active-item {
   color: var(--el-color-primary);
   background-color: var(--el-color-primary-light-9);
-  border-color: var(--el-primary-primary-color-hover);
+  border-color: var(--el-border-color-lighter);
 }
 .flex {
   display: flex;

@@ -4,3 +4,6 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'three-obj-mtl-loader'
+declare module 'vue-3d-model'

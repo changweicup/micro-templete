@@ -1,6 +1,6 @@
 <template>
   <div id="app-container">
-    <router-view id='router-container' />
+    <router-view id="router-container" />
   </div>
 </template>
 
@@ -50,5 +50,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-  @import 'styles/common.scss';
+@import "styles/common.scss";
+:deep(.el-card) {
+    border: none;
+    border-radius: 2px;
+}
 </style>

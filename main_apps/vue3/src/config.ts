@@ -12,21 +12,6 @@ if (process.env.NODE_ENV === 'production') {
   Object.keys(config).forEach((key) => {
     config[key] = window.location.origin
   })
-
-  // 在部署后，nextjs和nuxtjs依然和开发环境保持一致，绑定5008和6008端口，这里单独处理
-  const { protocol, hostname } = window.location
-  config.nextjs = `${protocol}//${hostname}:5008`
-  config.nuxtjs = `${protocol}//${hostname}:6008`
 }
-
-// if (true) {
-//   Object.keys(config).forEach((key) => {
-//     config[key] = `http://127.0.0.1:8080`
-//   })
-
-//   const { protocol, hostname } = location
-//   config.nextjs = `${protocol}//${hostname}:5008`
-//   config.nuxtjs = `${protocol}//${hostname}:6008`
-// }
 
 export default config

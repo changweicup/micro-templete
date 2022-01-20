@@ -4,7 +4,12 @@ import {
   Menu,
   Close,
   Setting,
-  Fold
+  Fold,
+  Expand,
+  IceTea,
+  Bell,
+  PartlyCloudy,
+  Pear
 } from '@element-plus/icons-vue'
 
 // 所需的组件
@@ -14,7 +19,12 @@ export const components = [
   Menu,
   Close,
   Setting,
-  Fold
+  Fold,
+  Expand,
+  IceTea,
+  Bell,
+  PartlyCloudy,
+  Pear
 ]
 // 注册
 export default (app: any) => {

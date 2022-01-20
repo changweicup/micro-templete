@@ -1,13 +1,12 @@
-<template lang="ts">
-  <PageCard>
+<template>
+  <div>
     用户列表
-  </PageCard>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import PageCard from '@/components/Pages/PageCard.vue'
 
 </script>
-<style lang="ts" scoped>
+<style scoped>
 
 </style>

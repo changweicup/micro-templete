@@ -6,20 +6,20 @@
       <div
         class="micro-layout-container"
         :style="{
-          top: `${commonConfig.HeaderHeight}px`,
-          minHeight: `calc(100vh - ${commonConfig.HeaderHeight}px)`,
-          marginLeft: `${!commonStore.isCollapse ? commonConfig.SlideMenuWidth : commonConfig.SlideMenuMinWidth}px`,
-          width: `calc(100% - ${(commonStore.isCollapse ? commonConfig.SlideMenuMinWidth : commonConfig.SlideMenuWidth) + 30}px)`
+          top: `${ThemeConfig.HeaderHeight}px`,
+          minHeight: `calc(100vh - ${ThemeConfig.HeaderHeight}px)`,
+          marginLeft: `${!commonStore.isCollapse ? ThemeConfig.SlideMenuWidth : ThemeConfig.SlideMenuMinWidth}px`,
+          width: `calc(100% - ${(commonStore.isCollapse ? ThemeConfig.SlideMenuMinWidth : ThemeConfig.SlideMenuWidth) + 30}px)`
         }"
       >
-        <TagView></TagView>
-        <div class="micro-content">
+        <TagView v-if="ThemeConfig.isTagsMenu"></TagView>
+        <PageContainer>
           <router-view v-slot="{ Component }">
             <transition name="el-fade-in-linear" mode="out-in" appear>
               <component :is="Component" />
             </transition>
           </router-view>
-        </div>
+        </PageContainer>
       </div>
     </div>
   </div>
@@ -29,8 +29,9 @@
 import Header from './Header/index.vue'
 import SlideMenu from './SlideMenu/verticalMenu.vue'
 import TagView from './TagView/index.vue'
-import { commonConfig } from './commonConfig'
+import { ThemeConfig } from '../themeConfig'
 import { useCommonStore } from '@/stores/modules/commonStore'
+import PageContainer from '../components/Pages/PageContainer.vue'
 
 const commonStore = useCommonStore()
 
@@ -43,17 +44,8 @@ const commonStore = useCommonStore()
 }
 .micro-layout-container {
   position: relative;
-  background: #f0f2f5;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 1s;
-}
-.micro-content {
-  position: relative;
-  box-sizing: border-box;
-  margin: 0px 15px 15px 15px;
-  top: 42px;
-  height: calc(100% - 42px);
-  width: 100%;
+  transition-duration: 0.5s;
 }
 </style>
