@@ -1,8 +1,7 @@
 <template>
-  <div v-if="!commonStore.isCollapse">
-    <template v-for="item in menuList">
+  <div class="menu-item-wrap" v-for="item in menuList" :key="item.path">
       <el-sub-menu
-        v-if="item.children && item.children.length > 0"
+        v-if="item.children && item.children.length > 0 && !commonStore.isCollapse"
         :key="item.name"
         :index="item.name"
       >
@@ -10,24 +9,17 @@
           <Icon :name="item.icon"></Icon>
           <span>{{ item.title }}</span>
         </template>
-        <menu-tree :menuList="item.children"></menu-tree>
+        <menu-tree :menuList="item.children" v-show="!commonStore.isCollapse"></menu-tree>
       </el-sub-menu>
-      <el-menu-item v-else :key="item.path" :index="item.path" @click="handleMenuClick(item)">
-        <template #title>
-          <Icon :name="item.icon"></Icon>
-          <span>{{ item.title }}</span>
-        </template>
-      </el-menu-item>
-    </template>
-  </div>
-  <div v-if="commonStore.isCollapse">
-    <template v-for="item in menuList">
-      <template v-if="item.children && item.children.length > 0">
+      <template v-if="item.children && item.children.length > 0 && commonStore.isCollapse">
         <el-popover :key="item.name" placement="right" :width="200" trigger="hover">
           <template #reference>
-            <div class="icon-sub-menu" :key="item.name">
-              <Icon :name="item.icon"></Icon>
-            </div>
+            <el-menu-item :key="item.path" :index="item.path" @click="handleMenuClick(item)">
+              <template #title>
+                <Icon :name="item.icon"></Icon>
+                <span v-show="!commonStore.isCollapse">{{ item.title }}</span>
+              </template>
+            </el-menu-item>
           </template>
           <div
             v-for="ele in item.children"
@@ -40,10 +32,17 @@
           </div>
         </el-popover>
       </template>
-      <div class="icon-menu-item icon-active" v-else :key="item.path" @click="handleMenuClick(item)">
-        <Icon :name="item.icon"></Icon>
-      </div>
-    </template>
+      <el-menu-item
+        v-if="!item.children || item.children.length === 0"
+        :key="item.path"
+        :index="item.path"
+        @click="handleMenuClick(item)"
+      >
+        <template #title>
+          <Icon :name="item.icon"></Icon>
+          <span v-show="!commonStore.isCollapse">{{ item.title }}</span>
+        </template>
+      </el-menu-item>
   </div>
 </template>
 <script lang="ts" setup>
@@ -76,14 +75,17 @@ const handleMenuClick = (item: { path: RouteLocationRaw }) => {
 }
 
 :deep(.el-menu-item.is-active) {
-  border-left: 3px solid var(--el-color-primary);
+  border-left-color: var(--el-color-primary);
   background-color: var(--el-color-primary-light-9);
   color: var(--el-color-primary);
-  border-radius: 2px;
 }
 :deep(.el-menu-item:hover) {
-  border-left: 3px solid var(--el-color-primary);
+  border-left-color: var(--el-color-primary);
+}
+:deep(.el-menu-item) {
+  border-left: 3px solid #ffffff;
   border-radius: 2px;
+  padding-left: 15px !important;
 }
 .icon-sub-menu {
   display: flex;
